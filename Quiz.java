@@ -16,7 +16,19 @@ public class Quiz{
         question = new MultipleChoiceQuestion("What animal is the largest land based carnivore?", "Polar Bear", "Lion", "Tiger", "Crocodile", "Grizzly Bear", "A");
         question.check();
 
-        question = new TrueFalseQuestion("Is the captial of France, Paris", "TRUE");
+        question = new TrueFalseQuestion("Are Lions native to Africa?", "TRUE");
+        question.check();
+
+        question = new TrueFalseQuestion("Are Orcas (Killer Whales) actually dolphins?", "TRUE");
+        question.check();
+
+        question = new TrueFalseQuestion("Are whales fish?", "FALSE");
+        question.check();
+
+        question = new TrueFalseQuestion("Are snakes reptiles?", "TRUE");
+        question.check();
+
+        question = new TrueFalseQuestion("Are tortoises the same as turtles?", "FALSE");
         question.check();
 
         Question.showResults();
