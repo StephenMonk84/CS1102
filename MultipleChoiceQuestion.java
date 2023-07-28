@@ -1,46 +1,28 @@
-import javax.swing.JOptionPane;
-public class MultipleChoiceQuestion {
-    static int nQuestions = 0;
-    static int nCorrect = 0;
-    String question;
-    String correctAnswer;
+import javax.swing.*;
+import java.awt.*;
+public class MultipleChoiceQuestion extends Question{
+    
 
     MultipleChoiceQuestion(String query, String a, String b, String c, String d, String e, String answer){
-        question = query+"\n";
-        question += "A. "+a+"\n";
-        question += "B. "+b+"\n";
-        question += "C. "+c+"\n";
-        question += "D. "+d+"\n";
-        question += "E. "+e+"\n";
+        super(query);
+        addChoice("A", a);
+        addChoice("B", b);
+        addChoice("C", c);
+        addChoice("D", d);
+        addChoice("E", e);
+        initQuestionDialog();
         correctAnswer = answer;
         correctAnswer = correctAnswer.toUpperCase();
     }
-    String ask(){
-        while(true){
-            String answer = JOptionPane.showInputDialog(question);
-            answer = answer.toUpperCase();
-           
-           if(answer.equals("A") || answer.equals("B") || answer.equals("C") || answer.equals("D") || answer.equals("E")){
-                return answer;
-           }
-            else{
-                JOptionPane.showMessageDialog(null, "Invalid Input! Please use only A, B, C, D, or E.");
-            }
-        } 
+    
+    void addChoice(String name, String label){
+        JPanel choice = new JPanel(new BorderLayout());
+        JButton button = new JButton(name);    
+        button.addActionListener(question);
+        choice.add(button,BorderLayout.WEST);
+        choice.add(new JLabel(label+"   ", JLabel.LEFT), BorderLayout.CENTER);
+        question.add(choice);
     }
 
-    void check(){
-        nQuestions++;
-            String answer = ask();
-            if (answer.equals(correctAnswer)){
-                JOptionPane.showMessageDialog(null, "Correct!");
-                nCorrect++;
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Incorrect! The correct answer is " + correctAnswer);
-            }
-        } 
-    static void showResults(){
-        JOptionPane.showMessageDialog(null, nCorrect + " correct out of " +nQuestions);
-    }   
+    
 }
