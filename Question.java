@@ -1,5 +1,5 @@
 import java.awt.*;
-import java.swing.*;
+import javax.swing.*;
 
 public class Question {
     static int nQuestions = 0;
